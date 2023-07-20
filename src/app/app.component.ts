@@ -52,13 +52,11 @@ export class AppComponent implements OnInit {
       console.log('Response from API is:', response);
       this.code = response.data.content;
       this.role = response.data.role;
-      console.log(this.code.split('<PROMPT>:', 2));
-      this.code = this.code.split('<PROMPT>:', 2);
       this.typing=false;
-      this.chatArray.push({ code: this.code[0], role: this.role });
-      if (this.code[1]) {
-        this.generateImage(this.code[1]);
-      }
+      this.chatArray.push({ code: this.code, role: this.role });
+      // if (this.code[1]) {
+      //   this.generateImage(this.code[1]);
+      // }
     }, (error) => {
       console.log('Error from API is', error);
     });
